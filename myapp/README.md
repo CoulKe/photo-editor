@@ -1,6 +1,3 @@
-## Description
-This is a photo editing app that is still in development made with React Javscript.
-
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
