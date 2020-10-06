@@ -15,6 +15,9 @@ function Filters() {
   let saturateField = document.querySelector("#saturate");
   let sepiaField = document.querySelector("#sepia");
 
+  function handleMenu(event){
+    
+  }
   function handleClick(event) {
     newFilters = { ...filters };
 
@@ -30,6 +33,7 @@ function Filters() {
   }
   return (
     <div id="myapp">
+    <p id = "menu" onClick = {handleMenu}>Menu</p>
       <div id="filters">
         <p className="filter">
           <label>Blur</label>
