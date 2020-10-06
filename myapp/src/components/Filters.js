@@ -29,7 +29,7 @@ function Filters() {
     sepiaField.value = newFilters.sepia;
   }
   return (
-      <div id="myapp">
+    <div id="myapp">
       <div id="filters">
         <p className="filter">
           <label>Blur</label>
@@ -233,17 +233,17 @@ function Filters() {
               );
               console.log(img);
             }}
-          ></input> <br/>
-          <button onClick={handleClick}>Reset</button> <br/>
+          ></input>{" "}
+          <br />
+          <button onClick={handleClick}>Reset</button> <br />
           <button onClick={handleClick}>Random</button>
         </p>
-        </div>
-        <div id="preview">
-          {/* <p>Upload image in order to preview </p> */}
-          {/* <input type="file" name="image-file" id="upload"/> */}
-
-        </div>
       </div>
+      <div id="preview">
+        <p>Upload image in order to preview </p>
+        <input type="file" name="image-file" id="upload" />
+      </div>
+    </div>
   );
 }
 
