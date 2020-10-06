@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
 import { FilterContext } from "./FilterContext";
-import image from "../images/space-coul.png";
 
 function Filters() {
   let [filters, setFilters] = useContext(FilterContext);
@@ -100,10 +99,6 @@ function Filters() {
             }}
           ></input>
         </p>
-        {/* <p className="filter">
-        <label>drop-shadow</label>
-        <input id="gs" name="gs" type="range" min="0" max="200" defaultValue="0"></input>
-      </p> */}
         <p className="filter">
           <label>grayscale</label>
           <input
@@ -247,7 +242,6 @@ function Filters() {
           {/* <p>Upload image in order to preview </p> */}
           {/* <input type="file" name="image-file" id="upload"/> */}
 
-          <img src={image} alt="" style={{ filter: img }} id="image" />
         </div>
       </div>
   );
