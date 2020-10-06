@@ -39,7 +39,7 @@ function Filters() {
             name="blur"
             type="range"
             min="0"
-            max="100"
+            max="200"
             defaultValue={filters.blur}
             onChange={function (event) {
               setFilters((filters = { ...filters, blur: event.target.value }));
@@ -60,7 +60,7 @@ function Filters() {
             name="brightness"
             type="range"
             min="0"
-            max="100"
+            max="200"
             defaultValue={filters.brightness}
             onChange={function (event) {
               setFilters(
@@ -84,7 +84,7 @@ function Filters() {
             name="contrast"
             type="range"
             min="0"
-            max="100"
+            max="200"
             defaultValue={filters.contrast}
             onChange={function (event) {
               setFilters(
@@ -102,7 +102,7 @@ function Filters() {
         </p>
         {/* <p className="filter">
         <label>drop-shadow</label>
-        <input id="gs" name="gs" type="range" min="0" max="100" defaultValue="0"></input>
+        <input id="gs" name="gs" type="range" min="0" max="200" defaultValue="0"></input>
       </p> */}
         <p className="filter">
           <label>grayscale</label>
@@ -111,7 +111,7 @@ function Filters() {
             name="grayscale"
             type="range"
             min="0"
-            max="100"
+            max="200"
             defaultValue={filters.contrast}
             onChange={function (event) {
               setFilters(
@@ -157,7 +157,7 @@ function Filters() {
             name="invert"
             type="range"
             min="0"
-            max="100"
+            max="200"
             defaultValue={filters.invert}
             onChange={function (event) {
               setFilters(
@@ -180,7 +180,7 @@ function Filters() {
             name="opacity"
             type="range"
             min="0"
-            max="100"
+            max="200"
             defaultValue={filters.opacity}
             onChange={function (event) {
               setFilters(
@@ -203,7 +203,7 @@ function Filters() {
             name="saturate"
             type="range"
             min="0"
-            max="100"
+            max="200"
             defaultValue={filters.saturate}
             onChange={function (event) {
               setFilters(
@@ -226,7 +226,7 @@ function Filters() {
             name="sepia"
             type="range"
             min="0"
-            max="100"
+            max="200"
             defaultValue={filters.sepia}
             onChange={function (event) {
               setFilters((filters = { ...filters, sepia: event.target.value }));
