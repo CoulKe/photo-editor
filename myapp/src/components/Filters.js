@@ -1,19 +1,44 @@
 import React, { useState } from "react";
 
 function Filters() {
+  let [previewText, setPreviewText] = useState(false)
+  const [img, setImg] = useState(false)
+  // Filters
   let [blur, setBlur] = useState(() => 0);
   let [brightness, setBrightness] = useState(() => 100);
   let [contrast, setContrast] = useState(() => 100);
-  let [grayscale, setGrayscale] = useState(0);
-  let [hue, setHue] = useState(0);
-  let [invert, setInvert] = useState(0);
-  let [opacity, setOpacity] = useState(100);
-  let [saturate, setSaturate] = useState(100);
-  let [sepia, setSepia] = useState(0);
+  let [grayscale, setGrayscale] = useState(() => 0);
+  let [hue, setHue] = useState(() => 0);
+  let [invert, setInvert] = useState(() => 0);
+  let [opacity, setOpacity] = useState(() => 100);
+  let [saturate, setSaturate] = useState(() => 100);
+  let [sepia, setSepia] = useState(() => 0);
 
   function handleMenu(event) {}
   function handleClick(event) {
     console.log(blur);
+  }
+  function uploadFile(){
+    let inputElement = document.querySelector("#upload");
+    inputElement.click()
+  }
+  function handleDragOver(e) {
+    e.preventDefault();
+  }
+  function handleDrop(e) {
+    e.preventDefault();
+    let file = e.dataTransfer.files[0];
+
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = function () {
+      e.preventDefault();
+      let src = this.result;
+      let img = document.querySelector('img');
+      img.src = src;
+      img.alt = file.name
+      setPreviewText(() => previewText = true);
+    };
   }
   function handleReset() {
     setBlur((blur = 0));
@@ -170,8 +195,10 @@ function Filters() {
         <br />
         <button onClick={handleReset}>Reset</button> <br />
         <button onClick={handleClick}>Auto</button>
-        <div id="preview">
-          <p>Upload image in order to preview </p>
+        <div id="preview" onDragOver={handleDragOver} onDrop={handleDrop} onClick={uploadFile}>
+        <img src="" alt="" className = "uploadedImage" className ={img ? "hideImage" : ""}/>
+        <span></span>
+          <p className = {previewText ? "previewText" : ""}>Upload image in order to preview </p>
           <input type="file" name="image-file" id="upload" />
         </div>
       </div>
