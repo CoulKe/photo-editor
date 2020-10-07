@@ -169,7 +169,7 @@ function Filters() {
         </span>
         <br />
         <button onClick={handleReset}>Reset</button> <br />
-        <button onClick={handleClick}>Random</button>
+        <button onClick={handleClick}>Auto</button>
         <div id="preview">
           <p>Upload image in order to preview </p>
           <input type="file" name="image-file" id="upload" />
