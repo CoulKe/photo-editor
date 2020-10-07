@@ -1,41 +1,38 @@
-import React, { useContext, useState } from "react";
-import { FilterContext } from "./FilterContext";
+import React, { useState } from "react";
 
 function Filters() {
-  let [filters, setFilters] = useContext(FilterContext);
-  let newFilters = { ...filters };
-  let [img, setImg] = useState();
-  let blurField = document.querySelector("#blur");
-  let brightField = document.querySelector("#brightness");
-  let contrastField = document.querySelector("#contrast");
-  let grayField = document.querySelector("#grayscale");
-  let hueField = document.querySelector("#hue");
-  let invertField = document.querySelector("#invert");
-  let opacityField = document.querySelector("#opacity");
-  let saturateField = document.querySelector("#saturate");
-  let sepiaField = document.querySelector("#sepia");
+  let [blur, setBlur] = useState(() => 0);
+  let [brightness, setBrightness] = useState(() => 100);
+  let [contrast, setContrast] = useState(() => 100);
+  let [grayscale, setGrayscale] = useState(0);
+  let [hue, setHue] = useState(0);
+  let [invert, setInvert] = useState(0);
+  let [opacity, setOpacity] = useState(100);
+  let [saturate, setSaturate] = useState(100);
+  let [sepia, setSepia] = useState(0);
 
-  function handleMenu(event){
-    
-  }
+  function handleMenu(event) {}
   function handleClick(event) {
-    newFilters = { ...filters };
-
-    blurField.value = newFilters.blur;
-    brightField.value = newFilters.brightness;
-    contrastField.value = newFilters.contrast;
-    grayField.value = newFilters.grayscale;
-    hueField.value = newFilters.hue;
-    invertField.value = newFilters.invert;
-    opacityField.value = newFilters.opacity;
-    saturateField.value = newFilters.saturate;
-    sepiaField.value = newFilters.sepia;
+    console.log(blur);
+  }
+  function handleReset() {
+    setBlur((blur = 0));
+    setBrightness((brightness = 100));
+    setContrast((contrast = 100));
+    setGrayscale((grayscale = 0));
+    setHue((hue = 0));
+    setInvert((invert = 0));
+    setOpacity((opacity = 100));
+    setSaturate((saturate = 100));
+    setSepia((sepia = 0));
   }
   return (
     <div id="myapp">
-    <p id = "menu" onClick = {handleMenu}>Menu</p>
+      <p id="menu" onClick={handleMenu}>
+        Menu
+      </p>
       <div id="filters">
-        <p className="filter">
+        <span className="filter">
           <label>Blur</label>
           <input
             id="blur"
@@ -43,20 +40,14 @@ function Filters() {
             type="range"
             min="0"
             max="200"
-            defaultValue={filters.blur}
-            onChange={function (event) {
-              setFilters((filters = { ...filters, blur: event.target.value }));
-              setImg(
-                (img = `grayscale(${filters.grayscale}%) blur(${filters.blur}px)
-             brightness(${filters.brightness}%) contrast(${filters.contrast}%) 
-             hue-rotate(${filters["hue-rotate"]}deg) opacity(${filters.opacity}%) 
-             invert(${filters.invert}%) saturate(${filters.saturate}%) sepia(${filters.sepia}%)`)
-              );
-              console.log(img);
+            value={blur}
+            onChange={function (e) {
+              setBlur((blur = e.target.value));
+              console.log(blur);
             }}
           ></input>
-        </p>
-        <p className="filter">
+        </span>
+        <span className="filter">
           <label>Brightness</label>
           <input
             id="brightness"
@@ -64,23 +55,14 @@ function Filters() {
             type="range"
             min="0"
             max="200"
-            defaultValue={filters.brightness}
-            onChange={function (event) {
-              setFilters(
-                (filters = { ...filters, brightness: event.target.value })
-              );
-              setImg(
-                (img = `grayscale(${filters.grayscale}%) brightness(${filters.brightness}%) blur(${filters.blur}px)
-            contrast(${filters.contrast}%) 
-             hue-rotate(${filters["hue-rotate"]}deg) opacity(${filters.opacity}%) 
-             invert(${filters.invert}%) saturate(${filters.saturate}%) sepia(${filters.sepia}%)`)
-              );
-
-              console.log(img);
+            value={brightness}
+            onChange={function (e) {
+              setBrightness((brightness = e.target.value));
+              console.log(brightness);
             }}
           ></input>
-        </p>
-        <p className="filter">
+        </span>
+        <span className="filter">
           <label>Contrast</label>
           <input
             id="contrast"
@@ -88,22 +70,14 @@ function Filters() {
             type="range"
             min="0"
             max="200"
-            defaultValue={filters.contrast}
-            onChange={function (event) {
-              setFilters(
-                (filters = { ...filters, contrast: event.target.value })
-              );
-              setImg(
-                (img = `grayscale(${filters.grayscale}%) blur(${filters.blur}px)
-             brightness(${filters.brightness}%) contrast(${filters.contrast}%) 
-             hue-rotate(${filters["hue-rotate"]}deg) opacity(${filters.opacity}%) 
-             invert(${filters.invert}%) saturate(${filters.saturate}%) sepia(${filters.sepia}%)`)
-              );
-              console.log(img);
+            value={contrast}
+            onChange={function (e) {
+              setContrast((contrast = e.target.value));
+              console.log(contrast);
             }}
           ></input>
-        </p>
-        <p className="filter">
+        </span>
+        <span className="filter">
           <label>grayscale</label>
           <input
             id="grayscale"
@@ -111,22 +85,14 @@ function Filters() {
             type="range"
             min="0"
             max="200"
-            defaultValue={filters.contrast}
-            onChange={function (event) {
-              setFilters(
-                (filters = { ...filters, grayscale: event.target.value })
-              );
-              setImg(
-                (img = `grayscale(${filters.grayscale}%) blur(${filters.blur}px)
-             brightness(${filters.brightness}%) contrast(${filters.contrast}%) 
-             hue-rotate(${filters["hue-rotate"]}deg) opacity(${filters.opacity}%) 
-             invert(${filters.invert}%) saturate(${filters.saturate}%) sepia(${filters.sepia}%)`)
-              );
-              console.log(img);
+            value={grayscale}
+            onChange={function (e) {
+              setGrayscale((grayscale = e.target.value));
+              console.log(grayscale);
             }}
           ></input>
-        </p>
-        <p className="filter">
+        </span>
+        <span className="filter">
           <label>hue-rotate</label>
           <input
             id="hue"
@@ -134,22 +100,14 @@ function Filters() {
             type="range"
             min="0"
             max="360"
-            defaultValue={filters["hue-rotate"]}
-            onChange={function (event) {
-              setFilters(
-                (filters = { ...filters, "hue-rotate": event.target.value })
-              );
-              setImg(
-                (img = `grayscale(${filters.grayscale}%) blur(${filters.blur}px)
-             brightness(${filters.brightness}%) contrast(${filters.contrast}%) 
-             hue-rotate(${filters["hue-rotate"]}deg) opacity(${filters.opacity}%) 
-             invert(${filters.invert}%) saturate(${filters.saturate}%) sepia(${filters.sepia}%)`)
-              );
-              console.log(img);
+            value={hue}
+            onChange={function (e) {
+              setHue((hue = e.target.value));
+              console.log(hue);
             }}
           ></input>
-        </p>
-        <p className="filter">
+        </span>
+        <span className="filter">
           <label>invert</label>
           <input
             id="invert"
@@ -157,22 +115,14 @@ function Filters() {
             type="range"
             min="0"
             max="200"
-            defaultValue={filters.invert}
-            onChange={function (event) {
-              setFilters(
-                (filters = { ...filters, invert: event.target.value })
-              );
-              setImg(
-                (img = `grayscale(${filters.grayscale}%) blur(${filters.blur}px)
-             brightness(${filters.brightness}%) contrast(${filters.contrast}%) 
-             hue-rotate(${filters["hue-rotate"]}deg) opacity(${filters.opacity}%) 
-             invert(${filters.invert}%) saturate(${filters.saturate}%) sepia(${filters.sepia}%)`)
-              );
-              console.log(img);
+            value={invert}
+            onChange={function (e) {
+              setInvert((invert = e.target.value));
+              console.log(invert);
             }}
           ></input>
-        </p>
-        <p className="filter">
+        </span>
+        <span className="filter">
           <label>opacity</label>
           <input
             id="opacity"
@@ -180,22 +130,14 @@ function Filters() {
             type="range"
             min="0"
             max="200"
-            defaultValue={filters.opacity}
-            onChange={function (event) {
-              setFilters(
-                (filters = { ...filters, opacity: event.target.value })
-              );
-              setImg(
-                (img = `grayscale(${filters.grayscale}%) blur(${filters.blur}px)
-             brightness(${filters.brightness}%) contrast(${filters.contrast}%) 
-             hue-rotate(${filters["hue-rotate"]}deg) opacity(${filters.opacity}%) 
-             invert(${filters.invert}%) saturate(${filters.saturate}%) sepia(${filters.sepia}%)`)
-              );
-              console.log(img);
+            value={opacity}
+            onChange={function (e) {
+              setOpacity((opacity = e.target.value));
+              console.log(opacity);
             }}
           ></input>
-        </p>
-        <p className="filter">
+        </span>
+        <span className="filter">
           <label>saturate</label>
           <input
             id="saturate"
@@ -203,22 +145,14 @@ function Filters() {
             type="range"
             min="0"
             max="200"
-            defaultValue={filters.saturate}
-            onChange={function (event) {
-              setFilters(
-                (filters = { ...filters, saturate: event.target.value })
-              );
-              setImg(
-                (img = `grayscale(${filters.grayscale}%) blur(${filters.blur}px)
-             brightness(${filters.brightness}%) contrast(${filters.contrast}%) 
-             hue-rotate(${filters["hue-rotate"]}deg) opacity(${filters.opacity}%) 
-             invert(${filters.invert}%) saturate(${filters.saturate}%) sepia(${filters.sepia}%)`)
-              );
-              console.log(img);
+            value={saturate}
+            onChange={function (e) {
+              setSaturate((saturate = e.target.value));
+              console.log(saturate);
             }}
           ></input>
-        </p>
-        <p className="filter">
+        </span>
+        <span className="filter">
           <label>sepia</label>
           <input
             id="sepia"
@@ -226,29 +160,22 @@ function Filters() {
             type="range"
             min="0"
             max="200"
-            defaultValue={filters.sepia}
-            onChange={function (event) {
-              setFilters((filters = { ...filters, sepia: event.target.value }));
-              setImg(
-                (img = `grayscale(${filters.grayscale}%) blur(${filters.blur}px)
-             brightness(${filters.brightness}%) contrast(${filters.contrast}%) 
-             hue-rotate(${filters["hue-rotate"]}deg) opacity(${filters.opacity}%) 
-             invert(${filters.invert}%) saturate(${filters.saturate}%) sepia(${filters.sepia}%)`)
-              );
-              console.log(img);
+            value={sepia}
+            onChange={function (e) {
+              setSepia((sepia = e.target.value));
+              console.log(sepia);
             }}
-          ></input>{" "}
-          <br />
-          <button onClick={handleClick}>Reset</button> <br />
-          <button onClick={handleClick}>Random</button>
-        </p>
-      </div>
-      <div id="preview">
-        <p>Upload image in order to preview </p>
-        <input type="file" name="image-file" id="upload" />
+          ></input>
+        </span>
+        <br />
+        <button onClick={handleReset}>Reset</button> <br />
+        <button onClick={handleClick}>Random</button>
+        <div id="preview">
+          <p>Upload image in order to preview </p>
+          <input type="file" name="image-file" id="upload" />
+        </div>
       </div>
     </div>
   );
 }
-
 export default Filters;
