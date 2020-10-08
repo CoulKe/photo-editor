@@ -14,6 +14,23 @@ body {
   margin: 0;
   background-color: yellow;
 }
+.previewWrapper{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+#reset{
+  width: max-content;
+  margin-top: 4px;
+  margin-left: 3rem;
+  color: #fff;
+  background-color: blue;
+  letter-spacing: 0.6ch;
+  padding: 0.5rem;
+  border-radius: 2px;
+  outline: none;
+  border: none;
+}
 #preview {
   width: 80%;
   height: 80vh;
@@ -57,7 +74,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  transform: translateX(450px);
+  transform: translateX(1000px);
   z-index: 2;
   transition-duration: 250ms;
   transition-timing-function: linear;
@@ -81,7 +98,10 @@ span{
 span input{
   margin-right: 14px;
 }
-@media (min-width: 426px){
+@media (min-width: 700px){
+  #reset{
+    margin-left: 3rem;
+  }
   body{
     height: 100vh;
     background-color: rgb(238, 238, 238);
@@ -94,7 +114,7 @@ span input{
   }
   #preview{
     min-width: 400px;
-    height: 350px;
+    height: 300px;
   }
   #myapp{
     max-width: 800px;

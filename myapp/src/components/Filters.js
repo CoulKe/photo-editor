@@ -18,7 +18,7 @@ function Filters() {
     document.querySelector('#filters').style = 'transform: translateX(20%);';
   }
   function hideMenu(e) {
-    e.target.closest('#filters').style = 'transform: translateX(450px);';
+    e.target.closest('#filters').style = 'transform: translateX(1000px);';
   }
   function clickInput() {
     let inputElement = document.querySelector("#upload");
@@ -203,7 +203,7 @@ function Filters() {
           ></input>
         </span>
       </div>
-
+      <div className = "previewWrapper">
       <div
         id="preview"
         onDragOver={handleDragOver}
@@ -230,9 +230,9 @@ function Filters() {
           id="upload"
           onChange={clickUpload}
         />
+        </div>
+        <button onClick={handleReset} id = "reset">Reset</button> <br />
       </div>
-      {/* <br />
-      <button onClick={handleReset}>Reset</button> <br /> */}
     </div>
 
   );
