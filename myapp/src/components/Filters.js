@@ -15,8 +15,6 @@ function Filters() {
   let [sepia, setSepia] = useState(() => 0);
 
   function handleMenu(event) {}
-  function handleClick(event) {
-  }
   function clickInput() {
     let inputElement = document.querySelector("#upload");
     inputElement.click();
@@ -201,7 +199,6 @@ function Filters() {
         </span>
         <br />
         <button onClick={handleReset}>Reset</button> <br />
-        <button onClick={handleClick}>Auto</button>
         <div
           id="preview"
           onDragOver={handleDragOver}
