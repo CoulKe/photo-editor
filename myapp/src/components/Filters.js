@@ -16,7 +16,6 @@ function Filters() {
 
   function handleMenu(event) {}
   function handleClick(event) {
-    console.log(blur);
   }
   function clickInput() {
     let inputElement = document.querySelector("#upload");
@@ -85,7 +84,6 @@ function Filters() {
             value={blur}
             onChange={function (e) {
               setBlur((blur = e.target.value));
-              console.log(blur);
             }}
           ></input>
         </span>
@@ -100,7 +98,6 @@ function Filters() {
             value={brightness}
             onChange={function (e) {
               setBrightness((brightness = e.target.value));
-              console.log(brightness);
             }}
           ></input>
         </span>
@@ -115,7 +112,6 @@ function Filters() {
             value={contrast}
             onChange={function (e) {
               setContrast((contrast = e.target.value));
-              console.log(contrast);
             }}
           ></input>
         </span>
@@ -130,7 +126,6 @@ function Filters() {
             value={grayscale}
             onChange={function (e) {
               setGrayscale((grayscale = e.target.value));
-              console.log(grayscale);
             }}
           ></input>
         </span>
@@ -145,7 +140,6 @@ function Filters() {
             value={hue}
             onChange={function (e) {
               setHue((hue = e.target.value));
-              console.log(hue);
             }}
           ></input>
         </span>
@@ -160,7 +154,6 @@ function Filters() {
             value={invert}
             onChange={function (e) {
               setInvert((invert = e.target.value));
-              console.log(invert);
             }}
           ></input>
         </span>
@@ -171,11 +164,10 @@ function Filters() {
             name="opacity"
             type="range"
             min="0"
-            max="200"
+            max="100"
             value={opacity}
             onChange={function (e) {
               setOpacity((opacity = e.target.value));
-              console.log(opacity);
             }}
           ></input>
         </span>
@@ -190,7 +182,6 @@ function Filters() {
             value={saturate}
             onChange={function (e) {
               setSaturate((saturate = e.target.value));
-              console.log(saturate);
             }}
           ></input>
         </span>
@@ -205,7 +196,6 @@ function Filters() {
             value={sepia}
             onChange={function (e) {
               setSepia((sepia = e.target.value));
-              console.log(sepia);
             }}
           ></input>
         </span>
@@ -218,7 +208,12 @@ function Filters() {
           onDrop={handleDrop}
           onClick={clickInput}
         >
-          <img alt="" id="uploadedImage" className={img ? "" : "hideImage"} />
+
+          <img alt="" id="uploadedImage" className={img ? "" : "hideImage"} style = {{ filter:
+          `grayscale(${grayscale}%) blur(${blur}px)
+             brightness(${brightness}%) contrast(${contrast}%) 
+             hue-rotate(${hue}deg) opacity(${opacity}%) 
+             invert(${invert}%) saturate(${saturate}%) sepia(${sepia}%)` }}/>
           <span></span>
           <p className={previewText ? "previewText" : ""}>
             Upload image in order to preview
