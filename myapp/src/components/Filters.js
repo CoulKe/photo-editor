@@ -29,7 +29,7 @@ function Filters() {
     if (clickFile) {
       // image.style = "display:block;";
       setPreviewText(() => (previewText = true));
-      setImg(() => img = true);
+      setImg(() => (img = true));
       const reader = new FileReader();
       reader.readAsDataURL(clickFile);
       reader.onloadend = function () {
@@ -50,7 +50,6 @@ function Filters() {
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onloadend = function () {
-      e.preventDefault();
       let src = this.result;
       image.src = src;
       image.alt = file.name;
@@ -222,7 +221,7 @@ function Filters() {
           <img alt="" id="uploadedImage" className={img ? "" : "hideImage"} />
           <span></span>
           <p className={previewText ? "previewText" : ""}>
-            Upload image in order to preview{" "}
+            Upload image in order to preview
           </p>
           <input
             type="file"
