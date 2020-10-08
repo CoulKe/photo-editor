@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import menu from "../images/hamburger.png";
 
 function Filters() {
   let [previewText, setPreviewText] = useState(false);
@@ -71,9 +72,7 @@ function Filters() {
   }
   return (
     <div id="myapp">
-      <p id="menu" onClick={showMenu}>
-        Menu
-      </p>
+      <img src={menu} alt="menu" id="menu" onClick={showMenu}/>
       <div id="filters">
         <button id="cancel" onClick={hideMenu}>&times;</button>
         <span className="filter">

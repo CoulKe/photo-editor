@@ -9,10 +9,11 @@ body {
 }
 
 #menu {
-  align-self: flex-end;
+  float: right;
   padding-right: 0.8rem;
   margin: 0;
-  background-color: yellow;
+  width: 25px;
+  height: 25px;
 }
 .previewWrapper{
   display: flex;
@@ -37,6 +38,7 @@ body {
   position: relative;
   font-weight: 600;
   margin: auto;
+  margin-top: 25px;
   border: 2px dotted blue;
   display: flex;
   align-items: center;
