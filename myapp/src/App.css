@@ -7,12 +7,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-#myapp {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-}
+
 #menu {
   align-self: flex-end;
   padding-right: 0.8rem;
@@ -20,14 +15,20 @@ body {
   background-color: yellow;
 }
 #preview {
-  /* margin: auto; */
-  max-width: 350px;
-  height: 350px;
+  width: 80%;
+  height: 80vh;
+  position: relative;
+  font-weight: 600;
+  margin: auto;
   border: 2px dotted blue;
   display: flex;
-  justify-content: center;
   align-items: center;
-  font-weight: 600;
+  justify-content: center;
+}
+#previewTextPosition{
+  position: absolute;
+  z-index: 1;
+  text-align: center;
 }
 .previewText{
   display: none;
@@ -43,10 +44,84 @@ body {
 .hideImage{
   display: none;
 }
-/* #filters {
-  width: 50vw;
+#filters {
+  width: 100vw;
+  height: 100%;
+  padding-top: 2rem;
+  color: #fff;
+  background-color: #000000;
+  opacity: 0.94;
+  position: absolute;
+  top:0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   transform: translateX(450px);
-} */
+  z-index: 2;
+  transition-duration: 250ms;
+  transition-timing-function: linear;
+}
+#cancel{
+  padding: 0.2rem;
+  color: #111111;
+  font-weight: 900;
+  font-size: larger;
+  width: max-content;
+  height: max-content;
+  align-self: flex-end;
+  margin-right: 28%;
+  margin-bottom: 4px;
+}
 span{
-  display: block;
+  width: 75%;
+  display: flex;
+  justify-content: space-between;
+}
+span input{
+  margin-right: 14px;
+}
+@media (min-width: 426px){
+  body{
+    height: 100vh;
+    background-color: rgb(238, 238, 238);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #cancel, #menu{
+    display: none;
+  }
+  #preview{
+    min-width: 400px;
+    height: 350px;
+  }
+  #myapp{
+    max-width: 800px;
+    height: 350px;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-radius: 14px;
+  }
+  #filters{
+    width: fit-content;
+    margin-right: 8px;
+    position: static;
+    color: #000000;
+    background-color: inherit;
+    transform: translateX(0px);
+    display: flex;
+    justify-content: space-around;
+  }
+  span{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  span input{
+    margin-right: 0px;
+  }
 }

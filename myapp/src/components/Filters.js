@@ -14,7 +14,12 @@ function Filters() {
   let [saturate, setSaturate] = useState(() => 100);
   let [sepia, setSepia] = useState(() => 0);
 
-  function handleMenu(event) {}
+  function showMenu(e) {
+    document.querySelector('#filters').style = 'transform: translateX(20%);';
+  }
+  function hideMenu(e) {
+    e.target.closest('#filters').style = 'transform: translateX(450px);';
+  }
   function clickInput() {
     let inputElement = document.querySelector("#upload");
     inputElement.click();
@@ -24,7 +29,6 @@ function Filters() {
     let image = document.querySelector("img");
     const clickFile = inputElement.files[0];
     if (clickFile) {
-      // image.style = "display:block;";
       setPreviewText(() => (previewText = true));
       setImg(() => (img = true));
       const reader = new FileReader();
@@ -67,10 +71,11 @@ function Filters() {
   }
   return (
     <div id="myapp">
-      <p id="menu" onClick={handleMenu}>
+      <p id="menu" onClick={showMenu}>
         Menu
       </p>
       <div id="filters">
+        <button id="cancel" onClick={hideMenu}>&times;</button>
         <span className="filter">
           <label>Blur</label>
           <input
@@ -197,33 +202,39 @@ function Filters() {
             }}
           ></input>
         </span>
-        <br />
-        <button onClick={handleReset}>Reset</button> <br />
-        <div
-          id="preview"
-          onDragOver={handleDragOver}
-          onDrop={handleDrop}
-          onClick={clickInput}
-        >
+      </div>
 
-          <img alt="" id="uploadedImage" className={img ? "" : "hideImage"} style = {{ filter:
-          `grayscale(${grayscale}%) blur(${blur}px)
+      <div
+        id="preview"
+        onDragOver={handleDragOver}
+        onDrop={handleDrop}
+        onClick={clickInput}
+      >
+        <img
+          alt=""
+          id="uploadedImage"
+          className={img ? "" : "hideImage"}
+          style={{
+            filter: `grayscale(${grayscale}%) blur(${blur}px)
              brightness(${brightness}%) contrast(${contrast}%) 
              hue-rotate(${hue}deg) opacity(${opacity}%) 
-             invert(${invert}%) saturate(${saturate}%) sepia(${sepia}%)` }}/>
-          <span></span>
-          <p className={previewText ? "previewText" : ""}>
-            Upload image in order to preview
+             invert(${invert}%) saturate(${saturate}%) sepia(${sepia}%)`,
+          }}
+        />
+        <p className={previewText ? "previewText" : ""} id = "previewTextPosition">
+          Upload image in order to preview
           </p>
-          <input
-            type="file"
-            name="image-file"
-            id="upload"
-            onChange={clickUpload}
-          />
-        </div>
+        <input
+          type="file"
+          name="image-file"
+          id="upload"
+          onChange={clickUpload}
+        />
       </div>
+      {/* <br />
+      <button onClick={handleReset}>Reset</button> <br /> */}
     </div>
+
   );
 }
 export default Filters;
