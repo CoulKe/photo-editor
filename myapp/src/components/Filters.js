@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
 function Filters() {
-  let [previewText, setPreviewText] = useState(false)
-  const [img, setImg] = useState(false)
+  let [previewText, setPreviewText] = useState(false);
+  let [img, setImg] = useState(false);
   // Filters
   let [blur, setBlur] = useState(() => 0);
   let [brightness, setBrightness] = useState(() => 100);
@@ -18,9 +18,26 @@ function Filters() {
   function handleClick(event) {
     console.log(blur);
   }
-  function uploadFile(){
+  function clickInput() {
     let inputElement = document.querySelector("#upload");
-    inputElement.click()
+    inputElement.click();
+  }
+  function clickUpload() {
+    let inputElement = document.querySelector("#upload");
+    let image = document.querySelector("img");
+    const clickFile = inputElement.files[0];
+    if (clickFile) {
+      // image.style = "display:block;";
+      setPreviewText(() => (previewText = true));
+      setImg(() => img = true);
+      const reader = new FileReader();
+      reader.readAsDataURL(clickFile);
+      reader.onloadend = function () {
+        let src = this.result;
+        image.src = src;
+        image.alt = clickFile.name;
+      };
+    }
   }
   function handleDragOver(e) {
     e.preventDefault();
@@ -28,16 +45,17 @@ function Filters() {
   function handleDrop(e) {
     e.preventDefault();
     let file = e.dataTransfer.files[0];
+    let image = document.querySelector("img");
 
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onloadend = function () {
       e.preventDefault();
       let src = this.result;
-      let img = document.querySelector('img');
-      img.src = src;
-      img.alt = file.name
-      setPreviewText(() => previewText = true);
+      image.src = src;
+      image.alt = file.name;
+      setPreviewText(() => (previewText = true));
+      setImg(() => (img = true));
     };
   }
   function handleReset() {
@@ -195,11 +213,23 @@ function Filters() {
         <br />
         <button onClick={handleReset}>Reset</button> <br />
         <button onClick={handleClick}>Auto</button>
-        <div id="preview" onDragOver={handleDragOver} onDrop={handleDrop} onClick={uploadFile}>
-        <img src="" alt="" className = "uploadedImage" className ={img ? "hideImage" : ""}/>
-        <span></span>
-          <p className = {previewText ? "previewText" : ""}>Upload image in order to preview </p>
-          <input type="file" name="image-file" id="upload" />
+        <div
+          id="preview"
+          onDragOver={handleDragOver}
+          onDrop={handleDrop}
+          onClick={clickInput}
+        >
+          <img alt="" id="uploadedImage" className={img ? "" : "hideImage"} />
+          <span></span>
+          <p className={previewText ? "previewText" : ""}>
+            Upload image in order to preview{" "}
+          </p>
+          <input
+            type="file"
+            name="image-file"
+            id="upload"
+            onChange={clickUpload}
+          />
         </div>
       </div>
     </div>
