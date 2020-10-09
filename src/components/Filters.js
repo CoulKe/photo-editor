@@ -27,7 +27,7 @@ function Filters() {
   }
   function clickUpload() {
     let inputElement = document.querySelector("#upload");
-    let image = document.querySelector("img");
+    let image = document.querySelector("#uploadedImage");
     const clickFile = inputElement.files[0];
     if (clickFile) {
       setPreviewText(() => (previewText = true));
@@ -47,7 +47,7 @@ function Filters() {
   function handleDrop(e) {
     e.preventDefault();
     let file = e.dataTransfer.files[0];
-    let image = document.querySelector("img");
+    let image = document.querySelector("#uploadedImage");
 
     const reader = new FileReader();
     reader.readAsDataURL(file);
