@@ -121,7 +121,6 @@ span input{
   #myapp{
     width: 100vw;
     overflow: hidden;
-    max-width: 800px;
     height: 350px;
     background-color: #fff;
     display: flex;
