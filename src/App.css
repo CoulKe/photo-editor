@@ -119,6 +119,7 @@ span input{
     height: 300px;
   }
   #myapp{
+    overflow-x: hidden;
     max-width: 800px;
     height: 350px;
     background-color: #fff;
