@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import menu from "../images/hamburger.png";
 
 function Filters() {
+  //previewText class doesn't exist
   let [previewText, setPreviewText] = useState(false);
   let [img, setImg] = useState(false);
-  // Filters
+  // Filters with their default values
   let [blur, setBlur] = useState(() => 0);
   let [brightness, setBrightness] = useState(() => 100);
   let [contrast, setContrast] = useState(() => 100);
@@ -28,8 +29,11 @@ function Filters() {
   function clickUpload() {
     let inputElement = document.querySelector("#upload");
     let image = document.querySelector("#uploadedImage");
+    //Select only the first image
     const clickFile = inputElement.files[0];
+    //If there's an uploaded image, display the image
     if (clickFile) {
+      //If there's an image, add previewText class which has display: none;
       setPreviewText(() => (previewText = true));
       setImg(() => (img = true));
       const reader = new FileReader();
@@ -46,6 +50,7 @@ function Filters() {
   }
   function handleDrop(e) {
     e.preventDefault();
+    //select only the first image
     let file = e.dataTransfer.files[0];
     let image = document.querySelector("#uploadedImage");
 
@@ -59,6 +64,7 @@ function Filters() {
       setImg(() => (img = true));
     };
   }
+  //Reset filters to their default values
   function handleReset() {
     setBlur((blur = 0));
     setBrightness((brightness = 100));
