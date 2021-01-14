@@ -15,15 +15,22 @@ body {
   width: 25px;
   height: 25px;
 }
+#cnvs{
+  display: none;
+}
 .previewWrapper{
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
 }
-#reset{
+#buttons{
+  display: flex;
+  justify-content: center;
+}
+#reset, #download{
   width: max-content;
   margin-top: 4px;
-  margin-left: 3rem;
+  margin-left: 1rem;
   color: #fff;
   background-color: blue;
   letter-spacing: 0.6ch;
@@ -31,6 +38,9 @@ body {
   border-radius: 2px;
   outline: none;
   border: none;
+}
+#reset:hover, #download:hover{
+  cursor: pointer;
 }
 #preview {
   width: 80%;

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import menu from "../images/hamburger.png";
 
+let realWidth = '';
+let realHeight = '';
 function Filters() {
   //previewText class doesn't exist
   let [previewText, setPreviewText] = useState(false);
@@ -64,7 +66,49 @@ function Filters() {
       setImg(() => (img = true));
     };
   }
-  //Reset filters to their default values
+  /*
+  * Download and set image name.
+  * @param dataSrc 
+  */
+  function downloadImage(dataSrc, filename = 'untitled.jpeg') {
+    let a = document.querySelector('#download_link')
+    a.href = dataSrc
+    a.download = filename
+    a.click();
+}
+  function handleDownload() {
+    if (!img) {
+      alert('Please upload image to continue');
+    }
+    else{
+      let myCanvas = document.querySelector('canvas')
+      let image = document.querySelector('#uploadedImage')
+      let ctx ='';
+
+      //real image dimensions
+      realWidth = image.naturalWidth;
+      realHeight = image.naturalHeight;
+      //canvas dimensions
+      myCanvas.setAttribute('width', realWidth)
+      myCanvas.setAttribute('height', realHeight)
+      //Draw image
+      ctx =  myCanvas.getContext('2d'); 
+
+      ctx.filter = `grayscale(${grayscale}%) blur(${blur}px)
+    brightness(${brightness}%) contrast(${contrast}%) 
+    hue-rotate(${hue}deg) opacity(${opacity}%) 
+    invert(${invert}%) saturate(${saturate}%) sepia(${sepia}%)`;
+
+    ctx.drawImage(image, 0, 0, myCanvas.width, myCanvas.height);
+
+      let dataSrc = myCanvas.toDataURL('image/png')
+      let name = image.alt;
+      downloadImage(dataSrc, name);
+    }
+  }
+  /*
+  *Reset filters to their default values
+  */
   function handleReset() {
     setBlur((blur = 0));
     setBrightness((brightness = 100));
@@ -218,6 +262,7 @@ function Filters() {
         <img
           alt=""
           id="uploadedImage"
+          src=""
           className={img ? "" : "hideImage"}
           style={{
             filter: `grayscale(${grayscale}%) blur(${blur}px)
@@ -236,7 +281,12 @@ function Filters() {
           onChange={clickUpload}
         />
         </div>
-        <button onClick={handleReset} id = "reset">Reset</button> <br />
+        <a id="download_link" href="/" hidden download >Download</a>
+        <canvas id="cnvs" className="canvas"></canvas>
+        <div id="buttons">
+        <button onClick={handleDownload} id = "download">Download</button>
+        <button onClick={handleReset} id = "reset">Reset</button>
+        </div>
       </div>
     </div>
 
