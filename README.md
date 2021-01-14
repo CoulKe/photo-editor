@@ -1,5 +1,5 @@
 ## DEMO
-[Photo editor gif](demo.gif)
+![Photo editor gif](demo.gif)
 ## PHOTO EDITOR
 
 A react project that utilizes css filters and HTML 5 canvas to  add filters to an image.
