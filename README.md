@@ -1,5 +1,12 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## DEMO
+[Photo editor gif](demo.gif)
+## PHOTO EDITOR
 
+A react project that utilizes css filters and HTML 5 canvas to  add filters to an image.
+This project is made up with React js.
+
+# SETUP
+Install all the packages by using yarn install
 ## Available Scripts
 
 In the project directory, you can run:
